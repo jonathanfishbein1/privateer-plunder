@@ -1,3 +1,8 @@
+namespace userconfig {
+    export const ARCADE_SCREEN_WIDTH = 480
+    export const ARCADE_SCREEN_HEIGHT = 360
+}
+
 enum SpriteKindLegacy {
     Player,
     Projectile,
@@ -17,28 +22,75 @@ function moveAliensDown () {
 }
 function spawnSpaceship () {
     spaceship = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . 7 . . . 7 . . . . . . 
-        . . . 7 7 7 7 7 7 7 7 7 . . . . 
-        . . . 7 . 7 . . . 7 . . . . . . 
-        . . . 7 . 7 . . . 7 . . . . . . 
-        . . . 7 . 7 . . . 7 . . . . . . 
-        . . . 7 . 7 . . . 7 . . . . . . 
-        . . . 7 7 7 7 7 7 7 7 7 . . . . 
-        . . . . . 7 . . . 7 . 7 . . . . 
-        . . . . . 7 . . . 7 . 7 . . . . 
-        . . . . . 7 . . . 7 . 7 . . . . 
-        . . . . . 7 . . . 7 . 7 . . . . 
-        . . . 7 7 7 7 7 7 7 7 7 . . . . 
-        . . . . . 7 . . . 7 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
+fffffffffffffffffffffffffffcfcccccffffffffffffffffccccfffffffffffffffffff
+fffffffffffffffffffffffffffcfceeefccccffffffffffffccccfffffffffffffffffff
+fffffffffffffffffffffffffffcfeee2efffcffffffffffffccccfffffffffffffffffff
+fffffffffffffffffffffffffffcfffff2eeeecfffffffffffcefcfffffffffffffffffff
+fffffffffffffffffffffffffffcffffffe22eecbfffffcffffffffffcfffffffffffffff
+fffffffffffffffffffffffffffcffffcfefffecbfffffcfeeeccccffffffffffffffffff
+fffffffffffffffffffffffffffcfcffffcccccfffffffcfeeeeeeecfffffffffffffffff
+fffffffffffffffffffffffffffcfcffffffffffffffffcffffffffffffffffffffffffff
+ffffffffffffffffffffffffffccfcfffffffffffffffffffceeccffcffffffffffffffff
+fffffffffffffffffffffffffffccfffffffcffffffffffffcecccfffffffffffffffffff
+ffffffffffffffffffffffffffffffffffffcbfffffffffffffffffffffffffffffffffff
+fffffffffffffffffffffcfbbfceeeefbbcffffffffffffffffefffffffffffffffffffff
+fffffffffffffffffffffccbcee22eccccccfffffffffffffffffffffffffffffffffffff
+ffffffffffffffffffffccbce222eccccfcffffffffffcccccccccccccccccccccccfffff
+ffffffffffffffffffffcb6fe222fcbcfffffffffffcccbbbbbbbbbbbbbbbbbbbbbccffff
+ffffffffffffffffffffcc6fe222fcbcffffffffffccb66666666666666666666ccffffff
+ffffffffffffffffffffccbfe222fcbccccfffffccbb66bbbbbbbbbb66666666ccfcfffff
+ffffffffffffffffffffcc6fe222fcbbcfccffffcbb666bddddbddddd666666ccffffffff
+ffffffffffffffffffffffccffeeeffcccffffffcb6666b1111dd111d66666ccfffffffff
+fffffffffffffffffffffcffffffffffffffcbfcb66666bdbb1dddbdd6666ccffffffffff
+fffffffffffffffffffffffffffccfffffffffccb66666bdbbbbbbbdd6666ccffffffffff
+fffffffffffffffffcffffffffffffffffcbbfcbb66666bdb6bbbbbdd6666cfffffffffff
+fffffffffffffffffcffcccffccccffcccccbcfb666666bdbbddd1ddd666cffffffffffff
+ffffffffffffffffffccbbcfeeeeeccbbcccfcf6666666bdbb1dddbdd666cffffffffffff
+fffffffffffffffccccbccf22222cc6ccfcffcf6666666bdbb1dddbdd666cffffffffffff
+fffffffffffffffcfcb6cf22222fcc6cffcffcf6666666b1db1dddd1d6666cfffffffffff
+fffffffffffffffccb6cf22222fcb66cfffffcf6666666bb111dd11db6666ccffffffffff
+fffffffffffffffccbbcf22222fcbb6cfffffcf66666666bb11dd1db66666ccccffffffff
+fffffffffffffffccbbcf22222fcbb6cfffffff6666666666bddddb6666666ccfffffffff
+fffffffffffffffccbbcf22222fc666cfffffffc6666666666bbbb66666666cffffffffff
+fffffffffffffffcc66cf22222fc666ccfcfffffc6666666666666666666666ccffffffff
+fffffffffffffffccc6cce2222ecc666ccffffffc66666666666666666666666cffffffff
+fffffffffffffffcfccccc22222efcccccccfffffccc6666ccccccccccccccccccccfffff
+ffffffffffffffffffcccceeeeeeffcccccffffffffcccccccccccccccccccccccccfcfff
+fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+fffffffffffffffffffffffffffffffffffffffffffffffffffefffffffffffffffffffff
+fffffffffffffffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffff
+fffffffffffffffffffffffffffffffffffffffffcfffffffffcffffcbddbbbbbbbbbbbbc
+ffffffffcbdbbbbbbbbbbbbbbbbbbbcffffffffce44eeeeeeefcfcecfcccccccccccccccc
+fffffffffccccccccccccccccccccccfffffffffcccccccccffcfffffcfcfcfccfccbfcff
+ffffffffffffcfbfcfccfcfbccffcfcffffffffffffffffffffffffffffcfffcffffcfffc
+dbbcffffffffccbccfcbfcfbccffcfcffffffffffcccccccffffffffcccccccccccccccfc
+bdbeccccccfeeccccccccccccceeeeeefffffffffefffffcfeeeeefe555555555555555ec
+444eeeeebcc55ddd5555555555555555effffffffefeecfcfffffffe544444444444444ec
+bcccffffffc4444444444444444444445ffffffffefceffeffeeefe54effffffffffffffc
+ccfffffffffffffffffffffffffffc4445effffffffffffffffff454efccccccccccccfff
+ffffffffffffffccccccccccccccccf444555555555555555557544efceeeeeeeeeeeefff
+fffffffffffffffffffffffffffffffc4444444444444444444444effffffffffffffffff
+ffffffffffffffcceeeeecfbb7cfeeccfccccccccccccccccccccffcccccbbbbcfeeecfff
+ffffffffffffffeeeeeeeefdbdefeeecffffffffffffffffffffffceeeccbcccccceeefff
+fffffffffffffcfeeeeeeef7edcceeeeeefffffeeeeeeeecffffceeeeefbfcbcccfeeffff
+fffffffffffffcffccccccf7ddcfeecccccfccccccccccccccccccccecfbfd1cccfccfcff
+fffffffffffffcffffffffff4cffffffffcbbbbffffffffcbbbbcffffffcfddcccffffcff
+fffffffffffffffffeecfccf7cfcffeefcffcffcfeeeefcbfccfbcceeecccccfccfecfcff
+ffffffffffffffffceeccbff7cfccfeefbfbdbfcfeeeefcccddcbcceeeecbbbccfccffcff
+fffffffffffffffffceeccdf7ceefceefbcb1bfcfeeeefccc1dcbcceeeecfffffeecfffff
+fffffffffffffffccfceecc7d7ecceeefbcfcffcfeeeefccfccfcfceeeeecfffcecffffff
+fffffffffffffffffffffffe4efffffffccccccffffffffccccccffffffffffffffcfffff
+ffffffffffffffffffcfffcceccccccccfccccccccccccccccccfcccccfcccccfffcfffff
+fffffffffffffffffffffceecceeeeeeeefffffeeeeeeeecffffceeeeeeeeeecfffffffff
+ffffffffffffffffffffffcceeeeeeeeeeeccceeeeeeeeeecccceeeeeeeeeccffffffffff
+ffffffffffffffffffffccffffffffffffffffffffffffffffffffffffcccffffffffffff
+fffffffffffffffffffffcfcfffffffffffffffffffffffffffffffffffffcfffffffffff
         `, SpriteKindLegacy.Spaceship)
     if (Math.percentChance(50)) {
-        spaceship.setPosition(scene.screenWidth(), 12)
+        spaceship.setPosition(scene.screenWidth(), 40)
         spaceship.vx = 0 - spaceshipSpeed
     } else {
-        spaceship.setPosition(0, 12)
+        spaceship.setPosition(0, 40)
         spaceship.vx = spaceshipSpeed
     }
     spaceship.setFlag(SpriteFlag.AutoDestroy, true)
@@ -238,7 +290,7 @@ sprites.onOverlap(SpriteKindLegacy.Enemy, SpriteKindLegacy.Fortress, function (s
 function createSplashBase () {
     splashBase = image.create(scene.screenWidth(), scene.screenHeight())
     splashBase.fill(15)
-    text_list = ["FIGHT", "FIAT!"]
+    text_list = ["PRIVATEER", "PLUNDER!"]
     currFont = drawStrings.createFontInfo(FontName.Font8, 2)
     drawStrings.writeMultipleCenter(
     text_list,
@@ -280,15 +332,15 @@ function showSplashScreen () {
 }
 function addGhostEnemies () {
     attractSprite = sprites.create(img`
-        . . . . . . . . 
-        . . . . 1 . . . 
-        . . 1 1 1 1 . . 
-        . . 1 . . . . . 
-        . . 1 . . . . . 
-        . . 1 1 1 1 . . 
-        . . . . 1 . . . 
-        . . . . . . . . 
-        `, SpriteKindLegacy.Enemy)
+        . . . . . . . .
+        . . . . 1 . . .
+        . . 1 1 1 1 . .
+        . . 1 . . . . .
+        . . 1 . . . . .
+        . . 1 1 1 1 . .
+        . . . . 1 . . .
+        . . . . . . . .
+    `, SpriteKindLegacy.Enemy)
     currX = scene.screenWidth() / 2 - 10
     currY = scene.screenHeight() / 2 + 4
     attractSprite.setPosition(currX, currY)
@@ -347,14 +399,40 @@ function resetAliens () {
                 . . . . . . . . . . . . . . . . 
                 `, SpriteKindLegacy.Enemy)
             alien.setImage(img`
-                . . . . . . . . 
-                . . . . 1 . . . 
-                . . 1 1 1 1 . . 
-                . . 1 . . . . . 
-                . . 1 . . . . . 
-                . . 1 1 1 1 . . 
-                . . . . 1 . . . 
-                . . . . . . . . 
+ffffffffff4444eeeeeeebbfffffffffff
+ffffffff44e4eeeeeeeeeebb5fffffffff
+ffffffe4eeeeee4eeeeeeeeeebbfffffff
+fffffeee4eee4eeeeeeee444eeeeffffff
+ffffee4eeeeeeeeeeeeee4444eee4fffff
+fffeeee4e4eceeeeeeeeefee44ee44ffff
+fffee4eeefeeee444e4eeeffee4eee4fff
+ffe4eeeeeeefe44444eeeeeeee44eeeeff
+feee4eeeeee44eeeee44eee4eeee4ee4ff
+eee4eeeeefeeeeeeeee4eee44eeeee44ff
+eeee4eeeeeeeeee4444444e444eee4e44f
+e44e4e4eefffffeeffeee4e444eeeeee44
+eee4e4ee4effffefeee4eee4444eeeee44
+4eeee44eeeffffeeeee4e4ee444eeeeee5
+4eeee44eeefffeee44e444e4444eeeeee5
+eeeeeeeeeeefffee44455eee4444eeeee4
+4eeeee4444eeffee44455eee4444eeeee4
+4eeee55e44eeffeee5e544eee444eeeee4
+eeeee54e44eeee444eeeeeeeee44eeeee5
+e4eee554eeeeeffefeeeeee44eeeeee4e4
+eeeefe44eeeeeffffe4544e454eeeee4e4
+e4eeeee44eeffffff444eee454eeeeeee4
+e4ee4eeee4eefeffeeeeeeeeeffeeeee44
+de4eeeeeeeeeeeffeeeeeeeeeeeeeeee44
+74eefefee4eeeffeeeffffeeeeeeeee44f
+f4e4eeefeeeeeefeeefeeeeeeeee4e44ff
+fd4eeeeefeeeeefeeeeeeeeee44ee454ff
+ffdee44eeeeeeeeeeeefeefc444ee54fff
+fffd44444eeeeeeeefefeeee4ee444ffff
+fffe74444ee44eeeeee44ee44ee44fffff
+ffff7d54eeeeeee444eeeeeeee44ffffff
+ffffffd544eeee4ee4eeeeee444fffffff
+ffffffff7d4eeeeeeeeeee444fffffffff
+ffffffffffd77444ee4b477fffffffffff
                 `)
             alienX = col * (alien.width + spacing) + spacing + leftMargin
             alienY = row * (alien.height + spacing) + topMargin
@@ -448,7 +526,7 @@ function initScreen () {
                 . . c c 7 7 7 7 7 c 7 7 7 7 7 c 
                 . . . c c c c c c c c c c c c c 
                 `, SpriteKindLegacy.Fortress)
-            fortress.setPosition(value * 16 + 8, 82 + index * 16)
+            fortress.setPosition(value * 16 + 8, 300 + index * 16)
         }
     }
 }
@@ -491,7 +569,7 @@ function initAliens () {
     numCols = 9
     numAliensStart = numRows * numCols
     spacing = 4
-    topMargin = 20
+    topMargin = 100
     leftMargin = (scene.screenWidth() - (8 * numCols + spacing * (numCols + 1))) / 2 + 4
     // Number of pixels to move aliens each time.
     aliensShiftAmt = 4
